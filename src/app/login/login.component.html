@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <div class="card border mt-5 p-3 "style="max-width:20rem;align-self: center;">
+            <h2>Bank</h2>
+            <h6>{{aim}}</h6>
+            <input (change)="acnochange($event)" class="mt-5 form-control rounded-5" type="number" name="" [placeholder]="account" id="Laccno">
+            <input (change)="pswdchange($event)" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd">
+            <button class="btn btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="login()">Log in</button>
+            <a href="../../register/register.component.html">register</a>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
