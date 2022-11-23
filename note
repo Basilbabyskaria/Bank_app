@@ -27,3 +27,19 @@ ANGULAR
             a.2.view to component
                 i.event binding (1 direction) -(event name)="function-name()"
                 ii.event binding using $event (event name)="function name($event)"
+                iii.Event binding using template reference variable -#varable_name # *
+            b.two way binding (two direction)  ts->html,html->ts
+                i.ngModel -formsModule in app.modules.ts
+                 -[(ngModel)]="property_name"
+
+    2.Angular Routing
+        To set path for a component
+
+        {
+            path:'value',component:class_name
+        }
+        eg:login
+
+        {
+            path:'',component:LoginComponent
+        }

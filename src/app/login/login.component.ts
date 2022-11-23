@@ -57,11 +57,33 @@ export class LoginComponent implements OnInit {//third executed
   //   }
   // }
 
+  //** 
+  // login(acn:any,psw:any){
+  //   // alert("click click click");
+  //   var acno=acn.value;
+  //   var pswd=psw.value;
+  //   var accDetails:any={
+  //     1000:{acno:1000,pswd:1000,name:'enjoyal'},
+  //     1001:{acno:1001,pswd:1001,name:'akhil'},
+  //     1002:{acno:1002,pswd:1003,name:'enjoyal'},
+  //   }
+  //   if(acno in accDetails){
+  //     if(pswd==accDetails[acno].pswd){
+  //       alert("success");
+  //     }
+  //     else{
+  //       alert("try again");
+  //     }
+  //   }
+  //   else{
+  //     alert("try again");
+  //   }
+  // }
 
-  login(acn:any,psw:any){
+  login(){
     // alert("click click click");
-    var acno=acn.value;
-    var pswd=psw.value;
+    var acno=this.acno;
+    var pswd=this.pswd;
     var accDetails:any={
       1000:{acno:1000,pswd:1000,name:'enjoyal'},
       1001:{acno:1001,pswd:1001,name:'akhil'},
