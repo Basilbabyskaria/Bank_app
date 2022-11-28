@@ -77,15 +77,18 @@ export class DataService {
     let userDetails =this.accDetails;
     amount1=parseInt(amount1);
     if(acno1 in userDetails){
-      if(pswd1== userDetails[acno1].pswd1){
-        if(amount1<userDetails[acno1].bal){
+      if(pswd1== userDetails[acno1].pswd){
+        if(userDetails[acno1].bal>=amount1){
         userDetails[acno1].bal-=amount1;
+        //parsing element to transaction array
         userDetails[acno1]['transaction'].push({
-          Type:'credit',Amount:amount1
+          Type:'Debit',Amount:amount1
         })
         return userDetails[acno1].bal;
         }else{
           alert("insufficient balance")
+          return false;
+
         }
       }
       else{

@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
 
   withdraw(){
-    var acno1=this.acno1;  //1000
+    var acno1=this.acno1; 
     var pswd1=this.pswd1;
     var amount1=this.amount1;
     const result=this.ds.withdraw(acno1,pswd1,amount1);
