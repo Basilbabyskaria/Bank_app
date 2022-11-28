@@ -43,3 +43,18 @@ ANGULAR
         {
             path:'',component:LoginComponent
         }
+    3.Dependency injection
+        to share data btw two depened classes
+        constractor (private router:Router)
+
+        eg:Router Class -navigateByUUrl is used to navigate the componet
+
+    4.Angular Services
+        to hold redundant data 
+        ng g s service_name
+    5.angular directive - to manupulate DOM
+     a.compnent irectives(array)
+     b. tructure directives(table)
+         /1.*ngFor
+    6.Angular form
+     a.Temple driven form (fist  design html page and cant )

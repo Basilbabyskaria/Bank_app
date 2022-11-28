@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<h3>welcome {{user}}</h3>
+<a routerLink="/transaction">transactions</a>
+<div class="parent row">
+    <div class="child col">
+                <div class="card border m-5 p-3 container"style="max-width:20rem;align-self: center;">
+                    <h2>Deposit</h2>
+                    <input [(ngModel)]="acno" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="acno">
+                    <input [(ngModel)]="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd">
+                    <input [(ngModel)]="amount" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount">
+                    <button class="btn  btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="deposit()">Deposit</button>
+                </div>
+    </div>
+    <div class="child col">
+                <div class="card border m-5 p-3 container"style="max-width:20rem;align-self: center;">
+                    <h2>Withdraw</h2>
+                    <input [(ngModel)]="acno1" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="acno1">
+                    <input [(ngModel)]="pswd1" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd1">
+                    <input [(ngModel)]="amount1" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount1">
+                    <button class="btn  btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="withdraw()">Withdraw</button>
+                </div>
+    </div>
+</div>

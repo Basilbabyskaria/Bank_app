@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {//third executed
   //properties/variables 
   //usrdefined methodes //4 th executed
 
-  constructor() { //first executed
+  constructor(private router:Router,private ds:DataService) { //first executed
     //it autiomaically invokes when the object is created
     }
 
@@ -80,26 +82,36 @@ export class LoginComponent implements OnInit {//third executed
   //   }
   // }
 
+  // login(){
+  //   // alert("click click click");
+  //   var acno=this.acno;
+  //   var pswd=this.pswd;
+  //   var accDetails=this.ds.accDetails;
+  //   if(acno in accDetails){
+  //     if(pswd==accDetails[acno].pswd){
+  //       alert("success");
+  //       this.router.navigateByUrl('dashboard')
+  //     }
+  //     else{
+  //       alert("try again");
+  //     }
+  //   }
+  //   else{
+  //     alert("try again");
+  //   }
+  // }
   login(){
-    // alert("click click click");
     var acno=this.acno;
     var pswd=this.pswd;
-    var accDetails:any={
-      1000:{acno:1000,pswd:1000,name:'enjoyal'},
-      1001:{acno:1001,pswd:1001,name:'akhil'},
-      1002:{acno:1002,pswd:1003,name:'enjoyal'},
-    }
-    if(acno in accDetails){
-      if(pswd==accDetails[acno].pswd){
-        alert("success");
-      }
-      else{
-        alert("try again");
-      }
+    const result =this.ds.login(acno,pswd);
+    if(result){
+      alert("login sucess")
+    this.router.navigateByUrl('dashboard');
     }
     else{
-      alert("try again");
+      alert("login faild")
+    this.router.navigateByUrl('');
     }
   }
-
 }
+
