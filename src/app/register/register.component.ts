@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   uname='';
   pswd='';
   register(){
-    // alert('clicked register');
+    alert('clicked register');
     console.log(this.registerForm);
     
     var uname=this.registerForm.value.uname;
