@@ -27,9 +27,11 @@ export class RegisterComponent implements OnInit {
   pswd='';
   register(){
     // alert('clicked register');
-    var uname=this.uname;
-    var acno=this.acno;
-    var pswd=this.pswd;
+    console.log(this.registerForm);
+    
+    var uname=this.registerForm.value.uname;
+    var acno=this.registerForm.value.acno;
+    var pswd=this.registerForm.value.pswd;
     const result =this.ds.register(acno,uname,pswd);
     if(result){
       alert("register sucess")
