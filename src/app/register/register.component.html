@@ -3,9 +3,16 @@
     <div class="col">
         <div class="card border mt-5 p-3 "style="max-width:20rem;align-self: center;">
         <form  [formGroup]="registerForm">
+            <div>
             <input formControlName="uname" class="mt-5 form-control rounded-5" type="text" name="" placeholder="Username" id="uname" >
-            <input formControlName="acno" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="accno">
+            </div>
+            <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color: red;">invalid</div>
+            <input formControlName="acno" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Account No" id="accno">
+            <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('acno')?.touched" style="color: red;">invalid</div>
+
             <input formControlName="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pwd">
+            <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('pswd')?.touched" style="color: red;">invalid</div>
+
             <button class="btn  btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="register()">Register</button>
         </form>   
         </div>

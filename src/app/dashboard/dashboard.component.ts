@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,9 +10,20 @@ import { DataService } from '../services/data.service';
 export class DashboardComponent implements OnInit {
   aim="your perfect banking partner";//string inter polation
   user='';
-  constructor(private ds:DataService) { 
+  constructor(private ds:DataService,private fb:FormBuilder) { 
     this.user=this.ds.currentUser;
   }
+  depositForm=this.fb.group({
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]],
+    amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
+
+  })
+  withdrawForm=this.fb.group({
+    acno1:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd1:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]],
+    amount1:['',[Validators.required,Validators.pattern('[0-9]*')]]
+  })
 
   ngOnInit(): void {
   }
@@ -22,9 +34,9 @@ export class DashboardComponent implements OnInit {
   pswd1='';
   amount1='';
   deposit(){
-    var acno=this.acno;  //1000
-    var pswd=this.pswd;
-    var amount=this.amount;
+    var acno=this.depositForm.value.acno;  //1000
+    var pswd=this.depositForm.value.pswd;
+    var amount=this.depositForm.value.amount;
     const result=this.ds.deposit(acno,pswd,amount);
     console.log(`dashboard ${result}`);
     
@@ -38,9 +50,9 @@ export class DashboardComponent implements OnInit {
 
 
   withdraw(){
-    var acno1=this.acno1; 
-    var pswd1=this.pswd1;
-    var amount1=this.amount1;
+    var acno1=this.withdrawForm.value.acno1; 
+    var pswd1=this.withdrawForm.value.pswd1;
+    var amount1=this.withdrawForm.value.amount1;
     const result=this.ds.withdraw(acno1,pswd1,amount1);
     if(result){
       alert(`${amount1} is withdrawed... Available balance is ${result}`);

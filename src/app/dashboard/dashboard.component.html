@@ -4,19 +4,33 @@
     <div class="child col">
                 <div class="card border m-5 p-3 container"style="max-width:20rem;align-self: center;">
                     <h2>Deposit</h2>
-                    <input [(ngModel)]="acno" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="acno">
-                    <input [(ngModel)]="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd">
-                    <input [(ngModel)]="amount" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount">
+                <form [formGroup]="depositForm">
+                    <!-- <input [ (ngModel)]="acno" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="acno">
+                    <input [ (ngModel)]="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd">
+                    <input [  (ngModel)]="amount" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount"> -->
+                    <input formControlName="acno" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Account No" id="acno">
+                    <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" style="color: red;">invalid</div>
+                    <input formControlName="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd">
+                    <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched" style="color: red;">invalid</div>
+                    <input formControlName="amount" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount">
+                    <div *ngIf="this.depositForm.get('amount')?.errors && this.depositForm.get('amount')?.touched" style="color: red;">invalid</div>
                     <button class="btn  btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="deposit()">Deposit</button>
+                </form>
                 </div>
     </div>
     <div class="child col">
                 <div class="card border m-5 p-3 container"style="max-width:20rem;align-self: center;">
                     <h2>Withdraw</h2>
-                    <input [(ngModel)]="acno1" class="mt-3 form-control rounded-5" type="number" name="" placeholder="Account No" id="acno1">
-                    <input [(ngModel)]="pswd1" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd1">
-                    <input [(ngModel)]="amount1" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount1">
+                <form [formGroup]="withdrawForm">
+                    <input formControlName="acno1" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Account No" id="acno1">
+                    <div *ngIf="this.depositForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" style="color: red;">invalid</div>
+                    <input formControlName="pswd1" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="pswd1">
+                    <div *ngIf="this.depositForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched" style="color: red;">invalid</div>
+                    <input formControlName="amount1" class="mt-3 form-control rounded-5" type="text" name="" placeholder="Amount" id="amount1">
+                    <div *ngIf="this.depositForm.get('amount1')?.errors && this.withdrawForm.get('amount1')?.touched" style="color: red;">invalid</div>
+                  
                     <button class="btn  btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="withdraw()">Withdraw</button>
+                </form>
                 </div>
     </div>
 </div>

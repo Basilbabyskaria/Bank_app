@@ -6,6 +6,17 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor() { }
+  saveDetails(){
+    if(this.accDetails){
+      localStorage.setItem("DataBase",JSON.stringify(this.accDetails))
+    }
+    if(this.currentUser){
+      localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+    }
+    if(this.currentAcno){
+      localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno))
+    }
+  }
   accDetails:any={
     1000:{acno:1000,pswd:1000,uname:'enjoyal',transaction:[],bal:100},
     1001:{acno:1001,pswd:1001,uname:'akhil',transaction:[]  ,bal:100},
@@ -24,7 +35,8 @@ export class DataService {
         bal:0,
         transaction:[]
       }
-      localStorage.setItem('aaa',accDetails[acno])
+      // localStorage.setItem('aaa',accDetails[acno])
+      this.saveDetails();
       return true;
     }
   }
@@ -37,6 +49,7 @@ export class DataService {
       if(pswd==accDetails[acno].pswd){
         this.currentUser=accDetails[acno].uname;
         this.currentAcno=acno
+        this.saveDetails();
         return true;
 
       }
@@ -59,6 +72,7 @@ export class DataService {
           Type:'credit',Amount:amount
         })
         console.log(`data service ${userDetails[acno].bal}`);
+        this.saveDetails();
         
         return userDetails[acno].bal;
       }
@@ -84,6 +98,7 @@ export class DataService {
         userDetails[acno1]['transaction'].push({
           Type:'Debit',Amount:amount1
         })
+        this.saveDetails();
         return userDetails[acno1].bal;
         }else{
           alert("insufficient balance")

@@ -4,17 +4,24 @@
         <div class="card border mt-5 p-3 "style="max-width:20rem;align-self: center;">
             <h2>Bank</h2>
             <h6>{{aim}}</h6>
+        <form  [formGroup]="loginForm">
+
             <!-- *  <input (change)="acnochange($event)" class="mt-5 form-control rounded-5" type="number" name="" [placeholder]="account" id="Laccno"> -->
             <!-- **   <input #acno class="mt-5 form-control rounded-5" type="number" name="" [placeholder]="account" id="Laccno"> -->
-            <input [(ngModel)]="acno" class="mt-5 form-control rounded-5" type="number" name="" [placeholder]="account" id="Laccno">
-            
+            <!-- <input [(ngModel)]="acno" class="mt-5 form-control rounded-5" type="number" name="" [placeholder]="account" id="Laccno"> -->
+            <input formControlName="acno" class="mt-5 form-control rounded-5" type="text" name="" [placeholder]="account" id="Laccno">
+            <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color: red;">invalid</div>
+
             <!-- *   <input (change)="pswdchange($event)" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd"> -->
             <!-- **    <input #pswd class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd"> -->
-            <input [(ngModel)]="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd">
+            <!-- <input [(ngModel)]="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd"> -->
+            <input formControlName="pswd" class="mt-3 form-control rounded-5" type="password" name="" placeholder="Password" id="Lpwd">
+            <div *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color: red;">invalid</div>
             <button class="btn btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="login()">Log in</button>
             
             <!-- ** <button class="btn btn-primary mt-4 mb-4 form-control rounded-5" type="button" (click)="login(acno,pswd)">Log in</button> -->
             <a href="register">register</a>
+        </form>
         </div>
     </div>
     <div class="col"></div>

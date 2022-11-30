@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -14,9 +15,13 @@ export class LoginComponent implements OnInit {//third executed
   //properties/variables 
   //usrdefined methodes //4 th executed
 
-  constructor(private router:Router,private ds:DataService) { //first executed
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder) { //first executed
     //it autiomaically invokes when the object is created
     }
+    loginForm=this.fb.group({
+      acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+      pswd:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]]
+    })
 
   ngOnInit(): void {//second executed
     //angular life cycle hook
@@ -101,8 +106,10 @@ export class LoginComponent implements OnInit {//third executed
   //   }
   // }
   login(){
-    var acno=this.acno;
-    var pswd=this.pswd;
+    var acno=this.loginForm.value.acno;
+    var pswd=this.loginForm.value.pswd;
+    if(this.loginForm.valid){
+
     const result =this.ds.login(acno,pswd);
     if(result){
       alert("login sucess")
@@ -112,6 +119,9 @@ export class LoginComponent implements OnInit {//third executed
       alert("login faild")
     this.router.navigateByUrl('');
     }
+  }else{
+    alert("invert")
+  }
   }
 }
 

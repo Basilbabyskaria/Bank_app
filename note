@@ -57,4 +57,13 @@ ANGULAR
      b. tructure directives(table)
          /1.*ngFor
     6.Angular form
-     a.Temple driven form (fist  design html page and cant )
+     a.Temple driven form (fist  design html page and cant do validation)
+     b.model driven form(first design model in ts file ,easy validation methodes)
+        -advanced validation
+        1.reactive form'=
+            form group ,array,control
+            we can directly add validation via importing rective form modules
+    7.local storage 
+      =>setIteam -to store data
+      =>getIteam -to retrice data 
+      =>removeIteam - to remove data
