@@ -67,3 +67,12 @@ ANGULAR
       =>setIteam -to store data
       =>getIteam -to retrice data 
       =>removeIteam - to remove data
+    8.Paren child ommunication
+        parent ->child
+        child->parent
+        
+
+        eg:
+        dashboard->parent
+        delete ->child
+        

@@ -5,16 +5,29 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  constructor() { }
+  constructor() {
+    this.getDetails();
+   }
   saveDetails(){
     if(this.accDetails){
-      localStorage.setItem("DataBase",JSON.stringify(this.accDetails))
+      localStorage.setItem("DataBase",JSON.stringify(this.accDetails));
     }
     if(this.currentUser){
-      localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+      localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
     }
     if(this.currentAcno){
-      localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno))
+      localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno));
+    }
+  }
+  getDetails(){
+    if(this.accDetails){
+      this.accDetails=JSON.parse(localStorage.getItem("DataBase")||"")
+    }
+    if(this.currentUser){
+      this.currentUser= JSON.parse(localStorage.getItem("currentUser")||"")
+    }
+    if(this.currentAcno){
+      this.currentAcno=JSON.parse(localStorage.getItem("currentAcno")||"")
     }
   }
   accDetails:any={
@@ -35,7 +48,6 @@ export class DataService {
         bal:0,
         transaction:[]
       }
-      // localStorage.setItem('aaa',accDetails[acno])
       this.saveDetails();
       return true;
     }
@@ -63,18 +75,18 @@ export class DataService {
     }
   }
   deposit(acno:any, pswd:any,amount:any){
-    let userDetails =this.accDetails;
+    let accDetails =this.accDetails;
     amount=parseInt(amount);
-    if(acno in userDetails){
-      if(pswd== userDetails[acno].pswd){
-        userDetails[acno].bal+=amount;
-        userDetails[acno]['transaction'].push({
+    if(acno in accDetails){
+      if(pswd== accDetails[acno].pswd){
+        accDetails[acno].bal+=amount;
+        accDetails[acno]['transaction'].push({
           Type:'credit',Amount:amount
         })
-        console.log(`data service ${userDetails[acno].bal}`);
+        console.log(`data service ${accDetails[acno].bal}`);
         this.saveDetails();
         
-        return userDetails[acno].bal;
+        return accDetails[acno].bal;
       }
       else{
         alert('Password Incorrect');
@@ -82,24 +94,24 @@ export class DataService {
       }
     }
     else{
-      alert('Invalid userDetails')
+      alert('Invalid accDetails')
       return false;
     }
   }
 
   withdraw(acno1:any, pswd1:any,amount1:any){
-    let userDetails =this.accDetails;
+    let accDetails =this.accDetails;
     amount1=parseInt(amount1);
-    if(acno1 in userDetails){
-      if(pswd1== userDetails[acno1].pswd){
-        if(userDetails[acno1].bal>=amount1){
-        userDetails[acno1].bal-=amount1;
+    if(acno1 in accDetails){
+      if(pswd1== accDetails[acno1].pswd){
+        if(accDetails[acno1].bal>=amount1){
+        accDetails[acno1].bal-=amount1;
         //parsing element to transaction array
-        userDetails[acno1]['transaction'].push({
+        accDetails[acno1]['transaction'].push({
           Type:'Debit',Amount:amount1
         })
         this.saveDetails();
-        return userDetails[acno1].bal;
+        return accDetails[acno1].bal;
         }else{
           alert("insufficient balance")
           return false;
@@ -112,7 +124,7 @@ export class DataService {
       }
     }
     else{
-      alert('Invalid userDetails')
+      alert('Invalid accDetails')
       return false;
     }
   }
