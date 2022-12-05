@@ -1,11 +1,14 @@
-
-<button class="btn btn-danger" style="float: right;" (click)="logout()">LogOut</button>
-<!-- <button class="btn btn-warning" style="float: right;" (click)="delete()">LogOut</button> -->
-<app-delete></app-delete>
-
+<div [ngClass]="acno?'style1':''">
 <h3>welcome {{user}}</h3>
+<button class="btn btn-danger" style="float: right;" (click)="logout()">LogOut</button>
+<button class="btn btn-warning" style="float: right;" (click)="delete()">Delete</button>
+<h4>system data and time: {{sdate |date:'short'}}</h4>
 <a routerLink="/transaction">transactions</a>
-<div class="parent row">
+
+</div>
+<app-delete [item]="acno" (onCancel)="no()"></app-delete>
+
+<div class="parent row"[ngClass]="acno?'style1':''">
     <div class="child col">
                 <div class="card border m-5 p-3 container"style="max-width:20rem;align-self: center;">
                     <h2>Deposit</h2>

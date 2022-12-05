@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DeleteComponent implements OnInit {
 @Input() item:string |undefined
-@Output()onCancel = new EventEmitter()
+@Output()onCancel = new EventEmitter();
 //input()-it is used to hold data from parent 
   constructor() { }
 

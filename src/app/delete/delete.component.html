@@ -1,6 +1,7 @@
-<div>
-    <h3>are you sure do you want to delte this account</h3>
-    <button class="btn btn-success">Yes</button>
-    <button class="btn btn-danger">No</button>
+<div *ngIf="item">
+    <!-- *ngif ->it will display only after clicing delete btn -->
+    <h3>are you sure do you want to delte this account {{item}}</h3>
+    <button class="btn btn-success"(click)="yes()">Yes</button>
+    <button class="btn btn-danger" (click)="no()">No</button>
 
 </div>

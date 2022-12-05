@@ -6,30 +6,30 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor() {
-    this.getDetails();
+    // this.getDetails();
    }
   saveDetails(){
     if(this.accDetails){
-      localStorage.setItem("DataBase",JSON.stringify(this.accDetails));
+      localStorage.setItem('DataBase',JSON.stringify(this.accDetails));
     }
     if(this.currentUser){
-      localStorage.setItem("currentUser",JSON.stringify(this.currentUser));
+      localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
     }
     if(this.currentAcno){
-      localStorage.setItem("currentAcno",JSON.stringify(this.currentAcno));
+      localStorage.setItem('currentAcno',JSON.stringify(this.currentAcno));
     }
   }
-  getDetails(){
-    if(this.accDetails){
-      this.accDetails=JSON.parse(localStorage.getItem("DataBase")||"")
-    }
-    if(this.currentUser){
-      this.currentUser= JSON.parse(localStorage.getItem("currentUser")||"")
-    }
-    if(this.currentAcno){
-      this.currentAcno=JSON.parse(localStorage.getItem("currentAcno")||"")
-    }
-  }
+  // getDetails(){
+  //   if(this.accDetails){
+  //     this.accDetails=JSON.parse(localStorage.getItem('DataBase')||'');
+  //   }
+  //   if(this.currentUser){
+  //     this.currentUser= JSON.parse(localStorage.getItem('currentUser')||'');
+  //   }
+  //   if(this.currentAcno){
+  //     this.currentAcno=JSON.parse(localStorage.getItem('currentAcno')||'');
+  //   }
+  // }
   accDetails:any={
     1000:{acno:1000,pswd:1000,uname:'enjoyal',transaction:[],bal:100},
     1001:{acno:1001,pswd:1001,uname:'akhil',transaction:[]  ,bal:100},

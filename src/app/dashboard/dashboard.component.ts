@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,8 +10,11 @@ import { DataService } from '../services/data.service';
 export class DashboardComponent implements OnInit {
   aim="your perfect banking partner";//string inter polation
   user='';
+  sdate:any;
+
   constructor(private ds:DataService,private fb:FormBuilder,private router:Router) { 
     this.user=this.ds.currentUser;
+    this.sdate=new Date;
   }
   depositForm=this.fb.group({
     acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
@@ -38,6 +40,7 @@ export class DashboardComponent implements OnInit {
   acno1='';
   pswd1='';
   amount1='';
+  
   deposit(){
     var acno=this.depositForm.value.acno;  //1000
     var pswd=this.depositForm.value.pswd;
@@ -74,5 +77,11 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('');
 
   }
-  
+  delete()
+{
+  this.acno=JSON.parse(localStorage.getItem('currentAcno')||'')
+}
+no(){
+  this.acno='';
+}
 }
