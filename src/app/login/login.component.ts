@@ -105,23 +105,43 @@ export class LoginComponent implements OnInit {//third executed
   //     alert("try again");
   //   }
   // }
+  // login(){
+  //   var acno=this.loginForm.value.acno;
+  //   var pswd=this.loginForm.value.pswd;
+  //   if(this.loginForm.valid){
+
+  //   const result =this.ds.login(acno,pswd);
+  //   if(result){
+  //     alert("login sucess")
+  //   this.router.navigateByUrl('dashboard');
+  //   }
+  //   else{
+  //     alert("login faild")
+  //   this.router.navigateByUrl('');
+  //   }
+  // }else{
+  //   alert("invert")
+  // }
+  // }
   login(){
     var acno=this.loginForm.value.acno;
     var pswd=this.loginForm.value.pswd;
     if(this.loginForm.valid){
 
-    const result =this.ds.login(acno,pswd);
-    if(result){
-      alert("login sucess")
-    this.router.navigateByUrl('dashboard');
-    }
-    else{
-      alert("login faild")
-    this.router.navigateByUrl('');
-    }
-  }else{
-    alert("invert")
-  }
+    this.ds.login(acno,pswd)
+    .subscribe((result:any)=>{
+      localStorage.setItem('currentUser',JSON.stringify(result.currentUser));
+      console.log(result.currentUser);
+      
+      localStorage.setItem('currentAcno',JSON.stringify(result.currentAcno));
+      localStorage.setItem('token',JSON.stringify(result.token));
+      alert(result.message);
+      this.router.navigateByUrl('dashboard')
+    },
+    result=>{
+      alert(result.error.message)
+    })
+    
   }
 }
-
+}

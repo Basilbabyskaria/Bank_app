@@ -49,9 +49,9 @@ ANGULAR
 
         eg:Router Class -navigateByUUrl is used to navigate the componet
 
-    4.Angular Services
+    4.Angular Services    //dashboard design
         to hold redundant data 
-        ng g s service_name
+        ng g s service_name 
     5.angular directive - to manupulate DOM
      a.compnent irectives(array)
      b. tructure directives(table)
