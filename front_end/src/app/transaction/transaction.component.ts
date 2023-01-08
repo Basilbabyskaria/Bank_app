@@ -14,6 +14,8 @@ export class TransactionComponent implements OnInit {
     this.ds.getTransaction(this.acno)
     .subscribe((result:any)=>{
       this.transaction=result.transaction
+      console.log(this.transaction);
+      
     },
     result=>{
       alert(result.error.message)
