@@ -6,7 +6,7 @@
 <a routerLink="/transaction">transactions</a>
 
 </div>
-<app-delete [item]="acno" (onCancel)="no()"></app-delete>
+<app-delete [item]="acno" (onCancel)="onCancel()"(onDelete)="onDelete($event)"></app-delete>
 
 <div class="parent row"[ngClass]="acno?'style1':''">
     <div class="child col">

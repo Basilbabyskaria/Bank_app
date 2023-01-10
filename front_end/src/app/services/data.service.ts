@@ -179,4 +179,8 @@ export class DataService {
   return this.http.post('http://localhost:3000/transaction',data,this.getToken())
 
 }
+deleteAcc(acno:any){
+  return this.http.delete('http://localhost:3000/deleteAcc/'+acno)
+
+}
 }
